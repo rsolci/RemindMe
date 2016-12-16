@@ -33,10 +33,10 @@ export default class EventList extends Component {
   }
 
   toggleCheck(originalEvent, newState) {
-    let newData = JSON.parse(JSON.stringify(this.state.eventData));
+    let newData = [...this.state.eventData];
     newData.forEach((event, index) => {
       if (event.id === originalEvent.id) {
-        Object.assign(event, newState);
+        newData[index] = Object.assign({}, event, newState);;
       }
     });
     this.setState({
