@@ -12,25 +12,16 @@ import {
   View,
   ListView
 } from 'react-native';
-import EventItem from './components/events/EventItem.js';
+import EventList from './components/events/EventList.js';
 
 export default class RemindMe extends Component {
   constructor(props) {
     super(props);
-    const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
-    this.state = {
-      dataSource: ds.cloneWithRows([
-        'John', 'Joel', 'James', 'Jimmy', 'Jackson', 'Jillian', 'Julie', 'Devin', 'teste1', 'teste2', 'teste2'
-      ])
-    };
   }
   render() {
     return (
       <View style={styles.container}>
-        <ListView
-          dataSource={this.state.dataSource}
-          renderRow={(rowData) => <EventItem eventName={rowData} />}
-        />
+        <EventList/>
       </View>
     );
   }
